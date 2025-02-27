@@ -1,0 +1,3 @@
+udp-replicator: no-manual-page usr/sbin/udp-replicator
+udp-replicator: statically-linked-binary usr/sbin/udp-replicator
+udp-replicator: init.d-script-not-included-in-package etc/init.d/udp-replicator

@@ -1,0 +1,2 @@
+udp-replicator usr/sbin
+config.json etc/udp-replicator/

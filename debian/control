@@ -1,0 +1,12 @@
+Source: udp-replicator
+Section: net
+Priority: optional
+Maintainer: Vadym Khomenko <exsver@gmail.com>
+Build-Depends: debhelper (>= 10)
+Standards-Version: 4.0.0
+
+Package: udp-replicator
+Architecture: amd64
+Depends: ${misc:Depends}, systemd
+Description: Simple UDP replicator (UDP proxy)
+ This package contains UDP replicator daemon.

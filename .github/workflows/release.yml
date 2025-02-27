@@ -1,0 +1,34 @@
+name: release
+
+on:
+  push:
+    tags:
+      - '*'
+
+jobs:
+  build-deb:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Install go
+        uses: actions/setup-go@v5
+        with:
+          go-version: 'stable'
+
+      - name: Install build deps
+        run: sudo apt update && sudo apt install -y make devscripts debhelper build-essential
+
+      - name: Build deb
+        run: debuild -us -uc -b
+
+      - name: Find deb package
+        run: echo "PACKAGE=$(ls ../*.deb | head -n 1)" >> $GITHUB_ENV
+
+      - name: Create GitHub Release
+        id: create_release
+        uses: softprops/action-gh-release@v2
+        with:
+          files: ${{ env.PACKAGE }}
+          token: ${{ secrets.GITHUB_TOKEN }}

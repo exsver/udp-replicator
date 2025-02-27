@@ -32,7 +32,7 @@ func main() {
 	defer cancel()
 
 	go func() {
-		ticker := time.NewTicker(60 * time.Second)
+		ticker := time.NewTicker(time.Duration(config.CountersInterval) * time.Second)
 		defer ticker.Stop()
 
 		for {
